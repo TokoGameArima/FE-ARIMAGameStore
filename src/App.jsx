@@ -1,8 +1,26 @@
+// src/App.jsx
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+
 function App() {
   return (
-    <>
-      <div className="text-cyan-500 font-bold text-4xl">Toko Game Arima</div>
-    </>
+    <Router>
+      <Navbar />
+      <div className="p-4">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} /> {/* Tambah ini */}
+        </Routes>
+      </div>
+      <Footer />
+    </Router>
   );
 }
 
