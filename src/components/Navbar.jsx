@@ -19,10 +19,10 @@ function Navbar() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/match">Match</Link>
+            <Link to="/gamelist">Game List</Link>
           </li>
           <li>
-            <Link to="/pages">Pages</Link>
+            <Link to="/cart">Cart</Link>
           </li>
           <li>
             <Link to="/blog">Blog</Link>
@@ -57,11 +57,11 @@ function Navbar() {
           <Link to="/" onClick={() => setIsOpen(false)}>
             Home
           </Link>
-          <Link to="/match" onClick={() => setIsOpen(false)}>
-            Match
+          <Link to="/gamelist" onClick={() => setIsOpen(false)}>
+            Game List
           </Link>
-          <Link to="/pages" onClick={() => setIsOpen(false)}>
-            Pages
+          <Link to="/cart" onClick={() => setIsOpen(false)}>
+            Cart
           </Link>
           <Link to="/blog" onClick={() => setIsOpen(false)}>
             Blog
