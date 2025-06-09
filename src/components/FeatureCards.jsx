@@ -5,7 +5,7 @@ const features = [
   {
     icon: <BadgeCheck size={32} className="text-[#f93cff]" />,
     title: "Game Original",
-    desc: "Semua game dijamin original & resmi dari publisher terpercaya.",
+    desc: "Semua game dijamin original & resmi dari publisher tepercaya.",
   },
   {
     icon: <Gamepad2 size={32} className="text-[#ffa9f9]" />,
