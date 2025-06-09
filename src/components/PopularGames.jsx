@@ -5,25 +5,25 @@ const games = [
     id: 1,
     title: "Elden Ring",
     image: "/images/CyberReign.png",
-    price: "Rp 699.000",
+    price: "699.000",
   },
   {
     id: 2,
     title: "Call of Duty: MW2",
     image: "/images/CyberReign.png",
-    price: "Rp 849.000",
+    price: "849.000",
   },
   {
     id: 3,
     title: "Cyberpunk 2077",
     image: "/images/CyberReign.png",
-    price: "Rp 599.000",
+    price: "599.000",
   },
   {
     id: 4,
     title: "Hogwarts Legacy",
     image: "/images/CyberReign.png",
-    price: "Rp 759.000",
+    price: "759.000",
   },
 ];
 
@@ -47,7 +47,7 @@ const PopularGames = () => {
               />
               <div className="p-4 text-left">
                 <h3 className="text-lg font-semibold mb-2">{game.title}</h3>
-                <p className="text-pink-400 font-bold">{game.price}</p>
+                <p className="text-pink-400 font-bold">Rp{game.price},-</p>
               </div>
             </div>
           ))}
