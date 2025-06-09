@@ -13,7 +13,7 @@ const Footer = () => {
         </div>
 
         {/* Navigation */}
-        <div className="">
+        <div className="text-center">
           &copy; 2025 Game Store Arima. All rights reserved.
         </div>
       </div>
