@@ -15,27 +15,29 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* This section is for Home Pages Layout */}
+        {/* Routes for Home Pages  with Layout */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/gamelist" element={<GamesPage />} />
           <Route path="/cart" element={<CartPage />} />
-          <Route path="*" element={<NotFound />} />
         </Route>
 
-        {/* This section is for Dashboard pages Layout */}
+        {/* Routes for Dashboard pages with  Layout */}
         <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
-              <DashboardLayout>
-                <Dashboard />
-              </DashboardLayout>
+              <DashboardLayout />
             </ProtectedRoute>
           }
-        />
+        >
+          <Route index element={<Dashboard />} />
+          {/* <Route path="cart" element={} /> */}
+          {/* <Route path="gamelist" element={} /> */}
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
