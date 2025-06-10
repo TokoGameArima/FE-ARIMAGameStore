@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import GameDetailModal from "../components/GameDetailModal";
-import GameList from "../components/GameList";
+import GameDetailModal from "../../components/GameDetailModal";
+import GameList from "../../components/GameList";
 
 function GamesPage() {
   const [selectedGame, setSelectedGame] = useState(null);
@@ -12,10 +12,7 @@ function GamesPage() {
   return (
     <>
       <GameList onGameClick={handleGameClick} />
-      <GameDetailModal
-        game={selectedGame}
-        onClose={() => setSelectedGame(null)}
-      />
+      <GameDetailModal game={selectedGame} onClose={() => setSelectedGame(null)} />
     </>
   );
 }

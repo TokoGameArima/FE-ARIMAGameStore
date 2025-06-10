@@ -1,13 +1,15 @@
-// src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Home/Login";
+import Register from "./pages/Home/Register";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import GamesPage from "./pages/GamesPage";
-import CartPage from "./pages/CartPage";
+import GamesPage from "./pages/Home/GamesPage";
+import CartPage from "./pages/Home/CartPage";
+
+import Dashboard from "./pages/Dashboard/Dashboard";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
@@ -21,6 +23,14 @@ function App() {
           <Route path="/gamelist" element={<GamesPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="*" element={<NotFound />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </div>
       <Footer />
