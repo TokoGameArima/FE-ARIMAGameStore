@@ -1,10 +1,12 @@
-const Dashboard = () => {
+import Sidebar from "../components/Sidebar";
+
+const DashboardLayout = ({ children }) => {
   return (
-    <div>
-      <h1 className="mb-4 text-2xl font-bold">Welcome to Dashboard</h1>
-      <p>This page is protected and doesn't show Navbar or Footer 🎯</p>
+    <div className="flex min-h-screen">
+      <Sidebar />
+      <main className="flex-1 p-8 bg-[#0a0025] text-white">{children}</main>
     </div>
   );
 };
 
-export default Dashboard;
+export default DashboardLayout;
