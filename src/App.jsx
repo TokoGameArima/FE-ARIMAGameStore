@@ -7,6 +7,7 @@ import GamesPage from "./pages/Home/GamesPage";
 import CartPage from "./pages/Home/CartPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import Contact from "./pages/Contact"
 
 import MainLayout from "./layouts/MainLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
@@ -22,6 +23,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/gamelist" element={<GamesPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
 
         {/* Routes for Dashboard pages with  Layout */}
