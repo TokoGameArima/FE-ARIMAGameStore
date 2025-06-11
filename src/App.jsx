@@ -22,6 +22,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/gamelist" element={<GamesPage />} />
           <Route path="/cart" element={<CartPage />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
 
         {/* Routes for Dashboard pages with  Layout */}
