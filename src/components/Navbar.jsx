@@ -32,8 +32,8 @@ function Navbar() {
 
         {/* Sign Up Button */}
         <div className="hidden md:block">
-          <Link to="/register" className="px-4 py-2 text-sm text-white transition rounded-full shadow bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105">
-            Sign Up →
+          <Link to="/login" className="px-4 py-2 text-sm text-white transition rounded-full shadow bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105">
+            Login →
           </Link>
         </div>
 
@@ -49,9 +49,6 @@ function Navbar() {
           <Link to="/" onClick={() => setIsOpen(false)}>
             Home
           </Link>
-          <Link to="/gamelist" onClick={() => setIsOpen(false)}>
-            Game List
-          </Link>
           <Link to="/cart" onClick={() => setIsOpen(false)}>
             Cart
           </Link>
@@ -61,8 +58,8 @@ function Navbar() {
           <Link to="/contact" onClick={() => setIsOpen(false)}>
             Contact
           </Link>
-          <Link to="/register" onClick={() => setIsOpen(false)} className="px-4 py-2 text-sm rounded-full shadow bg-gradient-to-r from-purple-500 to-pink-500">
-            Sign Up →
+          <Link to="/login" onClick={() => setIsOpen(false)} className="px-4 py-2 text-sm rounded-full shadow bg-gradient-to-r from-purple-500 to-pink-500">
+            Login →
           </Link>
         </div>
       )}
