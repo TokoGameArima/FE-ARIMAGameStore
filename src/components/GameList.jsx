@@ -46,9 +46,9 @@ function GameList({ onGameClick }) {
   const addToCart = (game) => {
     const exists = cartItems.find((item) => item.id === game.id);
     if (exists) {
-      setCartItems((prev) => prev.map((item) => (item.id === game.id ? { ...item, quantity: item.quantity + 1 } : item)));
+      console.error("Game sudah ada di keranjang");
     } else {
-      setCartItems([...cartItems, { ...game, quantity: 1 }]);
+      setCartItems((prev) => [...prev, { ...game, quantity: 1 }]);
     }
   };
 
@@ -80,7 +80,7 @@ function GameList({ onGameClick }) {
 
       <section className="grid grid-cols-1 gap-4 md:w-3/4 sm:grid-cols-2 lg:grid-cols-3">
         {filteredGames.map((game) => (
-          <Card key={game.id} game={game} onClick={onGameClick} onAddToCart={addToCart} />
+          <Card key={game.id} game={game} onClick={onGameClick} onAddToCart={addToCart} isInCart={cartItems.some((item) => item.id === game.id)} />
         ))}
       </section>
 
