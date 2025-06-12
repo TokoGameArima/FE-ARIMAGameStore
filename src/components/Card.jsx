@@ -1,6 +1,6 @@
 import React from "react";
 
-const Card = ({ game, onClick, onAddToCart }) => {
+const Card = ({ game, onClick, onAddToCart, isInCart }) => {
   return (
     <div
       className="group bg-[#1e1b3a] rounded-xl overflow-hidden shadow-lg shadow-black/20 
@@ -10,16 +10,22 @@ const Card = ({ game, onClick, onAddToCart }) => {
                  aspect-[3/4] flex flex-col"
       onClick={() => onClick(game)}
     >
+      {/* IMAGE + BADGE */}
       <div className="relative overflow-hidden flex-[3]">
         <img src={game.image} alt={game.title} className="object-cover w-full h-full transition-transform duration-300 ease-out group-hover:scale-105" />
         <div className="absolute inset-0 transition-opacity duration-300 opacity-0 bg-gradient-to-t from-black/40 to-transparent group-hover:opacity-100" />
+
+        {isInCart && <span className="absolute top-2 right-2 bg-green-500 text-white text-[10px] px-2 py-1 rounded-full text-xs shadow">✅ Added</span>}
       </div>
+
+      {/* TITLE + PRICE + BUTTON */}
       <div className="flex-[2] p-3 flex flex-col justify-between">
         <div>
           <h3 className="mb-1 text-sm font-semibold text-white transition-colors duration-200 sm:text-base line-clamp-2 group-hover:text-purple-200">{game.title}</h3>
 
           <p className="text-xs font-medium text-gray-400 sm:text-sm">Rp{game.price.toLocaleString()}</p>
         </div>
+
         <button
           onClick={(e) => {
             e.stopPropagation();
