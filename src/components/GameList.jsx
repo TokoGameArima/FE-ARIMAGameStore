@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "./Card";
+import ConfirmCheckoutModal from "./ConfirmCheckoutModal";
 
 function GameList({ onGameClick }) {
   const [categories, setCategories] = useState([{ category_name: "All" }]);
@@ -9,6 +10,7 @@ function GameList({ onGameClick }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [cartItems, setCartItems] = useState([]);
   const [cartOpen, setCartOpen] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -27,7 +29,7 @@ function GameList({ onGameClick }) {
           id: game._id,
           title: game.name || "Untitled",
           price: Math.round(game.price * 16000),
-          image: "/images/CyberReign.png", // Please Change it while database already have images for produtcs
+          image: "/images/CyberReign.png",
           category: game.categories_id?.category_name || "Uncategorized",
           description: game.description || "",
         }));
@@ -73,8 +75,8 @@ function GameList({ onGameClick }) {
           ))}
         </div>
 
-        <button onClick={() => setCartOpen(true)} className="w-full py-2 mt-8 text-white bg-pink-500 rounded hover:bg-pink-600">
-          🛒 View Cart ({cartItems.length})
+        <button className="w-full py-2 mt-8 text-white bg-pink-500 rounded hover:bg-pink-600" onClick={() => setShowConfirmModal(true)}>
+          🛒 Checkout ({cartItems.length})
         </button>
       </aside>
 
@@ -113,12 +115,16 @@ function GameList({ onGameClick }) {
                   Subtotal: Rp
                   {cartItems.reduce((total, item) => total + item.price * item.quantity, 0).toLocaleString()}
                 </p>
-                <button className="w-full px-4 py-2 mt-4 text-white bg-pink-500 rounded hover:bg-pink-600">Checkout</button>
+                <button className="w-full px-4 py-2 mt-4 text-white bg-pink-500 rounded hover:bg-pink-600" onClick={() => setShowConfirmModal(true)}>
+                  Checkout
+                </button>
               </div>
             </>
           )}
         </div>
       )}
+
+      <ConfirmCheckoutModal isOpen={showConfirmModal} onClose={() => setShowConfirmModal(false)} cartItems={cartItems} />
     </div>
   );
 }

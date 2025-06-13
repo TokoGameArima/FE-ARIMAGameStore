@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Gamepad2, ShoppingBasket, Menu, X } from "lucide-react";
+import { Gamepad2, ShoppingBasket, Menu, X, LayoutDashboard } from "lucide-react";
 import { useState } from "react";
 
 const Sidebar = () => {
@@ -16,15 +16,12 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Mobile menu button */}
       <button onClick={toggleSidebar} className="fixed top-4 left-4 z-50 p-2 bg-[#15003a] text-white rounded-lg md:hidden hover:bg-purple-600 transition">
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
-      {/* Overlay for mobile */}
       {isOpen && <div className="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden" onClick={toggleSidebar} />}
 
-      {/* Sidebar */}
       <aside
         className={`
           fixed md:static
@@ -43,6 +40,9 @@ const Sidebar = () => {
             <img src="/images/LogoArima.png" alt="Logo" className="h-12" />
           </div>
           <nav className="mt-6 space-y-4">
+            <Link to="/dashboard" className="flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600" onClick={() => setIsOpen(false)}>
+              <LayoutDashboard size={18} /> Dashboard
+            </Link>
             <Link to="/dashboard/gamelist" className="flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600" onClick={() => setIsOpen(false)}>
               <Gamepad2 size={18} /> Game List
             </Link>
