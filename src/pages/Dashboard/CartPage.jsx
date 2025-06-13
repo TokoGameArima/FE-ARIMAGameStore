@@ -3,7 +3,6 @@ import CartItem from "../../components/CartItem";
 import CartSummary from "../../components/CartSummary";
 
 const CartPage = () => {
-  // Dummy data
   const cartItems = [
     {
       id: 1,
@@ -31,9 +30,7 @@ const CartPage = () => {
 
       {/* Step Indicator */}
       <div className="flex justify-center mb-10 space-x-10 text-sm text-center">
-        <div className="pb-1 font-semibold border-b-2 border-pink-500">
-          1. Shopping cart
-        </div>
+        <div className="pb-1 font-semibold border-b-2 border-pink-500">1. Shopping cart</div>
         <div className="text-gray-500">2. Checkout details</div>
         <div className="text-gray-500">3. Order complete</div>
       </div>

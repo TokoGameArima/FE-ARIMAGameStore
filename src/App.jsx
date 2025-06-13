@@ -4,7 +4,7 @@ import Login from "./pages/Home/Login";
 import Register from "./pages/Home/Register";
 import NotFound from "./pages/NotFound";
 import GamesPage from "./pages/Dashboard/GamesPage";
-import CartPage from "./pages/Home/CartPage";
+import CartPage from "./pages/Dashboard/CartPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -20,7 +20,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/cart" element={<CartPage />} />
         </Route>
 
         {/* Routes for Dashboard pages with  Layout */}
@@ -34,6 +33,7 @@ function App() {
         >
           <Route index element={<Dashboard />} />
           <Route path="gamelist" element={<GamesPage />} />
+          <Route path="cart" element={<CartPage />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
