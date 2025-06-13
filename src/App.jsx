@@ -7,9 +7,9 @@ import GamesPage from "./pages/Dashboard/GamesPage";
 import CartPage from "./pages/Dashboard/CartPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
-
 import MainLayout from "./layouts/MainLayout";
 import DashboardLayout from "./layouts/DashboardLayout";
+import { Contact } from "lucide-react";
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
 
         {/* Routes for Dashboard pages with  Layout */}
