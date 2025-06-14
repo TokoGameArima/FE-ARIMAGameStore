@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getCategories } from "../api/categoryApi";
-import { getDevelopers } from "../api/developerApi";
+import { getCategories } from "../../api/categoryApi";
+import { getDevelopers } from "../../api/developerApi";
 
 function ProductFormModal({ isOpen, onClose, onSubmit, initialData }) {
   const [name, setName] = useState("");

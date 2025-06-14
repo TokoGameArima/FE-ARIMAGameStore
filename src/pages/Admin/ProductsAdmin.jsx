@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllProducts, deleteProduct, createProduct, updateProduct } from "../../api";
 import { Pencil, Trash } from "lucide-react";
-import ProductFormModal from "../../components/ProductFormModal";
+import ProductFormModal from "../../components/Admin/ProductFormModal";
 
 function ProductsAdmin() {
   const [products, setProducts] = useState([]);
