@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { getRandomGames } from "../../api/productApi";
 import { useNavigate } from "react-router-dom";
+import { getAllProducts } from "../../api"; // ⬅️ pastikan path-nya bener
 
 const PopularGames = () => {
   const [games, setGames] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const data = await getRandomGames();
-        setGames(data);
-      } catch (error) {
-        console.error("Gagal ambil game:", error);
-      }
+    const fetchRandomGames = async () => {
+      const all = await getAllProducts();
+      const shuffled = all.sort(() => 0.5 - Math.random());
+      const random4 = shuffled.slice(0, 4);
+      setGames(random4);
     };
-    fetchGames();
+    fetchRandomGames();
   }, []);
 
   return (
@@ -24,8 +22,9 @@ const PopularGames = () => {
         <h2 className="text-3xl md:text-4xl font-bold mb-12">Game Populer Minggu Ini</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {games.map((game) => (
-            <div key={game._id} className="bg-[#1a0833] rounded-xl overflow-hidden shadow-lg hover:shadow-[#f93cff]/30 transition">
-              <img src={game.pictures?.[0] || "/images/default.jpg"} alt={game.name} className="w-full h-52 object-cover" />
+            <div key={game._id} className="bg-[#1a0833] rounded-xl overflow-hidden shadow-lg hover:shadow-[#f93cff]/30 transition cursor-pointer" onClick={() => navigate(`/games/${game._id}`)}>
+              <img src={game.pictures || "/images/default.jpg"} alt={game.name} className="w-full h-52 object-cover" />
+
               <div className="p-4 text-left space-y-1">
                 <h3 className="text-lg font-semibold">{game.name}</h3>
                 <p className="text-sm text-pink-400">{game.categories_id?.category_name || "-"}</p>
