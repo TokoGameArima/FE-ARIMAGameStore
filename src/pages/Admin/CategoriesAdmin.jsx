@@ -1,7 +1,157 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { getCategories, createCategory, updateCategory, deleteCategory } from "../../api/categoryApi";
 
 function CategoriesAdmin() {
-  return <div>CategoriesAdmin</div>;
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [showForm, setShowForm] = useState(false);
+  const [editData, setEditData] = useState(null);
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [categoryToDelete, setCategoryToDelete] = useState(null);
+
+  const fetchCategories = async () => {
+    setLoading(true);
+    const data = await getCategories();
+    setCategories(data);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchCategories();
+  }, []);
+
+  const openForm = (category = null) => {
+    setEditData(category);
+    setName(category?.category_name || "");
+    setDescription(category?.description || "");
+    setShowForm(true);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const payload = { category_name: name, description };
+    try {
+      if (editData) {
+        await updateCategory(editData._id, payload);
+      } else {
+        await createCategory(payload);
+      }
+      fetchCategories();
+      setShowForm(false);
+      setEditData(null);
+      setName("");
+      setDescription("");
+    } catch (err) {
+      alert("Failed to save category");
+    }
+  };
+
+  const confirmDelete = (category) => {
+    setCategoryToDelete(category);
+    setShowDeleteModal(true);
+  };
+
+  const proceedDelete = async () => {
+    try {
+      await deleteCategory(categoryToDelete._id);
+      fetchCategories();
+    } catch {
+      alert("Failed to delete");
+    } finally {
+      setCategoryToDelete(null);
+      setShowDeleteModal(false);
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <h2 className="text-2xl font-bold">🗂️ Categories</h2>
+        <button onClick={() => openForm()} className="px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
+          + Add Category
+        </button>
+      </div>
+
+      {loading ? (
+        <p>Loading...</p>
+      ) : categories.length === 0 ? (
+        <p>No categories available.</p>
+      ) : (
+        <table className="w-full text-sm text-left text-white bg-[#1c003a] rounded">
+          <thead className="bg-purple-800 text-white">
+            <tr>
+              <th className="px-4 py-2">Name</th>
+              <th className="px-4 py-2">Description</th>
+              <th className="px-4 py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {categories.map((cat) => (
+              <tr key={cat._id} className="border-b border-purple-900">
+                <td className="px-4 py-2">{cat.category_name}</td>
+                <td className="px-4 py-2">{cat.description}</td>
+                <td className="px-4 py-2 flex gap-2">
+                  <button onClick={() => openForm(cat)} className="text-yellow-400 hover:underline">
+                    Edit
+                  </button>
+                  <button onClick={() => confirmDelete(cat)} className="text-red-500 hover:underline">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
+
+      {showForm && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center">
+          <form onSubmit={handleSubmit} className="bg-[#15003a] p-6 rounded-lg w-full max-w-md text-white space-y-4">
+            <h3 className="text-xl font-semibold">{editData ? "Edit Category" : "Add Category"}</h3>
+
+            <div>
+              <label className="block mb-1">Category Name</label>
+              <input type="text" value={name} onChange={(e) => setName(e.target.value)} required className="w-full p-2 rounded bg-[#1d004f] border border-purple-600" />
+            </div>
+
+            <div>
+              <label className="block mb-1">Description</label>
+              <textarea rows={3} value={description} onChange={(e) => setDescription(e.target.value)} className="w-full p-2 rounded bg-[#1d004f] border border-purple-600" />
+            </div>
+
+            <div className="flex justify-end gap-3">
+              <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 bg-gray-600 rounded hover:bg-gray-700">
+                Cancel
+              </button>
+              <button type="submit" className="px-4 py-2 bg-purple-600 rounded hover:bg-purple-700">
+                {editData ? "Update" : "Create"}
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+
+      {showDeleteModal && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center">
+          <div className="bg-[#15003a] p-6 rounded-lg max-w-sm w-full text-white text-center">
+            <h3 className="text-lg font-semibold mb-4">
+              Are you sure you want to delete <span className="text-red-400">{categoryToDelete?.category_name}</span>?
+            </h3>
+            <div className="flex justify-center gap-4">
+              <button onClick={() => setShowDeleteModal(false)} className="px-4 py-2 rounded bg-gray-600 hover:bg-gray-700">
+                No
+              </button>
+              <button onClick={proceedDelete} className="px-4 py-2 rounded bg-red-600 hover:bg-red-700">
+                Yes
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default CategoriesAdmin;
