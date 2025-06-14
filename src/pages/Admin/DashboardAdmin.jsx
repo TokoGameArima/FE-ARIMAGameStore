@@ -1,6 +1,6 @@
 import React from "react";
 
-const Dashboard = () => {
+const DashboardAdmin = () => {
   const mockStats = {
     totalGames: 128,
     totalOrders: 542,
@@ -109,4 +109,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardAdmin;

@@ -4,8 +4,8 @@ import Sidebar from "../components/Sidebar";
 const DashboardLayout = () => {
   return (
     <div className="flex h-screen overflow-hidden">
-      <Sidebar />
-      <main className="flex-1 overflow-y-auto bg-[#0a0025] text-white p-8 ">
+      <Sidebar role="user" />
+      <main className="flex-1 overflow-y-auto bg-[#0a0025] text-white p-8">
         <div className="pt-16 md:pt-0">
           <Outlet />
         </div>
