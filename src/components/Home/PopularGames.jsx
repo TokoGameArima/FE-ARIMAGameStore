@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getRandomGames } from "../../api/gameApi";
+import { getRandomGames } from "../../api/productApi";
 import { useNavigate } from "react-router-dom";
 
 const PopularGames = () => {
