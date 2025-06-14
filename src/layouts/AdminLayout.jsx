@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 
-const DashboardLayout = () => {
+const AdminLayout = () => {
   return (
     <div className="flex h-screen overflow-hidden">
-      <Sidebar role="user" />
+      <Sidebar role="admin" />
       <main className="flex-1 overflow-y-auto bg-[#0a0025] text-white p-8">
         <div className="pt-16 md:pt-0">
           <Outlet />
@@ -14,4 +14,4 @@ const DashboardLayout = () => {
   );
 };
 
-export default DashboardLayout;
+export default AdminLayout;
