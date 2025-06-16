@@ -1,8 +1,8 @@
 import React from "react";
-import HeroSection from "../../components/HeroSection";
-import FeatureCards from "../../components/FeatureCards";
-import PopularGames from "../../components/PopularGames";
-import BlogSection from "../../components/BlogSection";
+import HeroSection from "../../components/Home/HeroSection";
+import FeatureCards from "../../components/Home/FeatureCards";
+import PopularGames from "../../components/Home/PopularGames";
+import BlogSection from "../../components/Home/BlogSection";
 
 const Home = () => {
   return (
