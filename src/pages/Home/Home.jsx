@@ -1,4 +1,4 @@
-// import React from "react";
+import React from "react";
 import HeroSection from "../../components/Home/HeroSection";
 import FeatureCards from "../../components/Home/FeatureCards";
 import PopularGames from "../../components/Home/PopularGames";
