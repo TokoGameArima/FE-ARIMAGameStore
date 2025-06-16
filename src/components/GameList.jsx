@@ -161,6 +161,7 @@ function GameList({ onGameClick }) {
         {filteredGames.map((game) => (
           <div
             key={game.id}
+            onClick={() => onGameClick(game)}
             className="bg-[#1e1b3a] rounded-lg overflow-hidden shadow-md p-4 hover:scale-[1.01] transition"
           >
             <img
@@ -174,7 +175,10 @@ function GameList({ onGameClick }) {
                 Rp{game.price.toLocaleString()}
               </p>
               <button
-                onClick={() => addToCart(game)}
+                onClick={(e) => {
+                  e.stopPropagation(); //mencegah klik card saat klik tombol
+                  addToCart(game);
+                }}
                 className="mt-2 text-sm text-pink-400 hover:underline"
               >
                 Add to Cart
