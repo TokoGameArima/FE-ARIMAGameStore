@@ -3,6 +3,7 @@ import { getAllProducts } from "../../api/productApi";
 import { getCategories } from "../../api/categoryApi";
 import { useCart } from "../../context/CartContext";
 import Pagination from "../../components/Common/Pagination";
+import GameDetailModal from "../../components/Common/GameDetailModal";
 
 import { Link } from "react-router-dom";
 
@@ -17,6 +18,10 @@ const GamesPage = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const gamesPerPage = 6;
+
+  const [selectedGame, setSelectedGame] = useState(null);
+  const openModal = (game) => setSelectedGame(game);
+  const closeModal = () => setSelectedGame(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,7 +82,11 @@ const GamesPage = () => {
       {/* Game Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {currentGames.map((game) => (
-          <div key={game._id} className="bg-[#1e1b3a] p-4 rounded">
+          <div
+            key={game._id}
+            onClick={() => setSelectedGame(game)}
+            className="bg-[#1e1b3a] p-4 rounded cursor-pointer hover:scale-[1.01] transition"
+          >
             <img
               src={game.pictures || "/images/placeholder.png"}
               alt={game.name}
@@ -91,7 +100,10 @@ const GamesPage = () => {
               Rp {game.price},-
             </p>
             <button
-              onClick={() => addToCart(game)}
+              onClick={(e) => {
+                e.stopPropagation();
+                addToCart(game);
+              }}
               className="w-full bg-pink-600 hover:bg-pink-700 rounded py-2"
               disabled={cartItems.some((item) => item._id === game._id)}
             >
@@ -102,6 +114,7 @@ const GamesPage = () => {
             <Link
               to={`/games/${game._id}/reviews`}
               className="text-sm text-indigo-400 hover:underline mt-2 block"
+              onClick={(e) => e.stopPropagation()}
             >
               View Reviews
             </Link>
@@ -114,6 +127,10 @@ const GamesPage = () => {
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={(page) => setCurrentPage(page)}
+      />
+      <GameDetailModal
+        game={selectedGame}
+        onClose={() => setSelectedGame(null)}
       />
     </div>
   );
