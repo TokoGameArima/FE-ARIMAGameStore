@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="text-center md:text-left">
           <h3 className="text-2xl font-bold"><span className="bg-pink-600 text-white px-2 rounded-full">ARIMA</span> GAME STORE</h3>
           <p className="text-sm text-gray-400 mt-2">
-            Toko game digital terbaik sejak 2025.
+            The best digital game store since 2025.
           </p>
         </div>
 

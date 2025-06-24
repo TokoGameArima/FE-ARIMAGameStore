@@ -4,18 +4,18 @@ import { Gamepad2, BadgeCheck, DollarSign } from "lucide-react";
 const features = [
   {
     icon: <BadgeCheck size={32} className="text-[#f93cff]" />,
-    title: "Game Original",
-    desc: "Semua game dijamin original & resmi dari publisher tepercaya.",
+    title: "Original Games",
+    desc: "All games are guaranteed to be original & officially from trusted publishers.",
   },
   {
     icon: <Gamepad2 size={32} className="text-[#ffa9f9]" />,
-    title: "Update Terbaru",
-    desc: "Game terbaru selalu tersedia dan bisa langsung kamu mainkan.",
+    title: "Latest Updates",
+    desc: "The latest games are always available and ready for you to play.",
   },
   {
     icon: <DollarSign size={32} className="text-[#34d399]" />,
-    title: "Harga Terbaik",
-    desc: "Promo dan diskon menarik setiap minggunya, hanya di sini.",
+    title: "Best Prices",
+    desc: "Exciting promos and discounts every week, only here.",
   },
 ];
 
@@ -24,7 +24,7 @@ const FeatureCards = () => {
     <section className="bg-[#120328] text-white py-16 px-6">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-12">
-          Kenapa Belanja Game di sini?
+          Why Shop for Games Here?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((item, index) => (
