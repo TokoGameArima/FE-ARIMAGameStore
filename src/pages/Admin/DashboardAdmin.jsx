@@ -1,10 +1,30 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { getAllProducts } from "../../api";
+import { getAllOrders } from "../../api/orderApi";
+import { getAllUsers } from "../../api/userApi";
 
 const DashboardAdmin = () => {
+  const [products, setProducts] = useState([]);
+  const [orders, setOrders] = useState([]);
+  const [users, setUsers] = useState([]);
+
+  const fetchData = async () => {
+    const products = await getAllProducts();
+    setProducts(products);
+    const orders = await getAllOrders();
+    setOrders(orders);
+    const users = await getAllUsers();
+    setUsers(users);
+  };
+
+  useEffect(() => {
+    fetchData();
+  });
+
   const mockStats = {
-    totalGames: 128,
-    totalOrders: 542,
-    activeUsers: 87,
+    totalGames: products.length ?? 0,
+    totalOrders: orders.length ?? 0,
+    activeUsers: users.length ?? 0,
   };
 
   return (
@@ -13,11 +33,11 @@ const DashboardAdmin = () => {
         <div className="absolute inset-0"></div>
         <div className="relative p-8 pb-12">
           <div className="mx-auto max-w-7xl">
-            <div className="flex items-center mb-4 space-x-4">
+            <div className="flex flex-wrap items-center mb-4 gap-4">
               <div className="flex items-center justify-center w-12 h-12 text-2xl bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl">🎮</div>
               <div>
                 <h1 className="text-4xl font-bold text-transparent bg-gradient-to-r from-white to-gray-300 bg-clip-text">Admin Dashboard</h1>
-                <p className="mt-1 text-gray-400">Only accessible when logged in 🔐</p>
+                <p className="text-sm md:text-base mt-1 text-gray-400">Only accessible when logged in as an admin 🔐</p>
               </div>
             </div>
           </div>
@@ -26,7 +46,7 @@ const DashboardAdmin = () => {
 
       <div className="px-8 pb-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+          <div className="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-8">
             <div className="relative group">
               <div className="absolute inset-0 transition-opacity duration-300 opacity-75 bg-gradient-to-r from-purple-600/30 to-purple-800/30 rounded-2xl blur-lg group-hover:opacity-100"></div>
               <div className="relative bg-[#1e1b3a]/80 backdrop-blur-sm border border-purple-500/20 p-8 rounded-2xl hover:border-purple-500/40 transition-all duration-300 transform hover:-translate-y-1">
