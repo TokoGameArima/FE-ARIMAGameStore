@@ -1,6 +1,8 @@
 import { Link, useNavigate} from "react-router-dom";
 import { useState } from "react";
 
+import { ArrowRight } from "lucide-react";
+
 function Contact() {
   const [email, setEmail] = useState('');
   const [firstname, setFirstname] = useState('');
@@ -36,7 +38,8 @@ function Contact() {
           <textarea placeholder="Your Message" className="w-full p-2 rounded bg-[#1d004f] border border-purple-600 text-white placeholder-purple-300" rows="4" value={message}onChange={(e) => setMessage(e.target.value)}/>
 
           <button type="submit" className="w-full py-2 font-bold text-white transition rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105">
-            Send Email →
+            <span>Send Email</span>
+            <ArrowRight size={16} className="inline ml-1" />
           </button>
 
         </form>

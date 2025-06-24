@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,7 +65,8 @@ function Navbar() {
               isActive("/login") ? "scale-105" : ""
             }`}
           >
-            Login →
+          <span>Login</span>
+          <ArrowRight size={16} className="inline ml-1" />
           </Link>
         </div>
 
@@ -122,7 +123,8 @@ function Navbar() {
             isActive("/login") ? "scale-105" : ""
           }`}
         >
-          Login →
+          <span>Login</span>
+          <ArrowRight size={16} className="inline ml-1" />
         </Link>
       </div>
     </nav>
