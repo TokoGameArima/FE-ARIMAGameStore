@@ -17,8 +17,8 @@ function Contact() {
   return (
 
     <div className="flex flex-col items-center justify-center min-h-screen text-center px-4 bg-[#0a0025]">
-      <h1 className="text-6xl font-bold text-White-600 mb-4">Contact Us</h1>
-        <form className="bg-[#15003a] p-8 rounded-lg w-full max-w-sm shadow-lg space-y-4" onSubmit={handleSubmit}>
+      <h1 className="text-4xl md:text-5xl font-semibold mb-6 leading-tight">Contact Us</h1>
+        <form className="bg-[#15003a] p-8 rounded-xl w-full max-w-sm shadow-lg space-y-4" onSubmit={handleSubmit}>
 
           <input type="email" placeholder="E-mail" className="w-full p-2 rounded bg-[#1d004f] border border-purple-600 text-white placeholder-purple-300" value={email} onChange={(e) => setEmail(e.target.value)} />
 
