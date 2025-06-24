@@ -79,15 +79,15 @@ function ProductsAdmin() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <h2 className="text-2xl font-bold">📦 Products List</h2>
-        <button onClick={openCreateModal} className="px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
+        <button onClick={openCreateModal} className="w-full sm:w-fit font-bold px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
           + Add Product
         </button>
       </div>
 
       {loading ? (
-        <p>Loading...</p>
+        <p>Loading game products...</p>
       ) : products.length === 0 ? (
         <p>No products available.</p>
       ) : (

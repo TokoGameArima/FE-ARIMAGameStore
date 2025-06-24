@@ -58,8 +58,8 @@ const OrderDetail = () => {
           ))}
         </ul>
 
-        <div className="mt-4">
-          <button className="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded text-white" onClick={() => setShowProofModal(true)}>
+        <div>
+          <button className="mt-6 bg-indigo-600 hover:bg-indigo-700 px-3 py-2 rounded text-white" onClick={() => setShowProofModal(true)}>
             📎 Show Proof of Payment
           </button>
         </div>
