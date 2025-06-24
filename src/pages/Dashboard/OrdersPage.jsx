@@ -21,7 +21,7 @@ const OrdersPage = () => {
         <div className="space-y-4">
           {orders.map((order) => (
             <div key={order._id} className="bg-[#1e1b3a] p-4 rounded">
-              <div className="flex justify-between">
+              <div className="flex flex-wrap justify-between gap-4">
                 <span className="text-sm text-gray-400">Order ID: {order._id}</span>
                 <span className={order.status === "completed" ? "text-green-400" : "text-yellow-400"}>{order.status === "completed" ? "Completed" : "Pending Confirmation"}</span>
               </div>
