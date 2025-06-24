@@ -2,10 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { register } from "../../api";
 
+import { Eye, EyeOff, ArrowRight } from "lucide-react";
+
 function Register() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
   const handleRegister = async (e) => {
@@ -13,7 +16,7 @@ function Register() {
     try {
       await register({ username, password, role: "user" });
       navigate("/login");
-    } catch (err) {
+    } catch {
       setError("Registration failed. Try a different username.");
     }
   };
@@ -38,22 +41,33 @@ function Register() {
             onChange={(e) => setUsername(e.target.value)}
             aria-required="true"
           />
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            className="w-full p-2 rounded bg-[#1d004f] border border-purple-600 text-white placeholder-purple-300"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            aria-required="true"
-          />
+          <div className="relative">
+            <input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              className="w-full p-2 rounded bg-[#1d004f] border border-purple-600 text-white placeholder-purple-300"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              aria-required="true"
+            />
+            <button
+              type="button"
+              className="absolute inset-y-0 right-3 flex items-center text-purple-300"
+              onClick={() => setShowPassword(!showPassword)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
           <button type="submit" className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 rounded-full font-bold hover:scale-105 transition" aria-label="Register">
-            Register →
+            <span>Register</span>
+            <ArrowRight size={16} className="inline ml-1" />
           </button>
           <p className="text-sm text-center mt-4 text-white">
             Already have an account?{" "}
             <Link to="/login" className="text-yellow-400 hover:underline">
-              Login here
+              Log in here
             </Link>
           </p>
         </form>
