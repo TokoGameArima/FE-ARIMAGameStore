@@ -20,7 +20,7 @@ function Login() {
       } else {
         navigate("/games");
       }
-    } catch (err) {
+    } catch {
       setError("Invalid credentials. Please try again.");
     }
   };

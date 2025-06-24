@@ -110,7 +110,7 @@ const Sidebar = ({ role }) => {
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
-                  <ShoppingBasket size={18} /> Cart
+                  <ShoppingBasket size={18} /> My Cart
                 </Link>
                 <Link
                   to="/orders"

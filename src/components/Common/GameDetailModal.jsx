@@ -53,7 +53,7 @@ const GameDetailModal = ({ game, onClose }) => {
             }}
             className="text-indigo-400 hover:underline text-sm"
           >
-            Lihat ulasan & rating →
+            See reviews and comments →
           </Link>
         </motion.div>
       </motion.div>
