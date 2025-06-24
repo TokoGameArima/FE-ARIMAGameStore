@@ -7,7 +7,7 @@ const FAQ = () => {
       answer: "ARIMA Game Store adalah platform terbaik untuk membeli berbagai macam game favorit Anda, mulai dari aksi, petualangan, hingga simulasi."
     },
     {
-      question: "Bagaimana cara membeli game di Toko Game?",
+      question: "Bagaimana cara membeli game di ARIMA Game Store?",
       answer: "Anda dapat membeli game dengan memilih game yang diinginkan, menambahkannya ke keranjang, dan menyelesaikan pembayaran melalui metode yang tersedia."
     },
     {
@@ -27,7 +27,7 @@ const FAQ = () => {
           <strong className="font-extrabold">FAQ</strong>
         </h1>
         <p className="text-sm md:text-xl mb-12 text-gray-300 text-center">
-          Temukan jawaban untuk pertanyaan umum tentang <stong>ARIMA Game Store</stong> di bawah ini.
+          Temukan jawaban untuk pertanyaan umum tentang <strong>ARIMA Game Store</strong> di bawah ini.
         </p>
         <div className="space-y-8">
         {faqs.map((faq, index) => (
