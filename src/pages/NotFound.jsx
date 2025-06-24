@@ -14,16 +14,16 @@ function NotFound() {
             <span>4</span>
           </h1>
           <h2 className="text-2xl font-semibold text-gray-200 mb-2">
-            Oops! Tidak ditemukan.
+            Oops! Not found.
           </h2>
           <p className="text-gray-400 mb-6">
-            Halaman yang kamu cari tidak tersedia.
+            The page you are looking for is not available.
           </p>
           <Link
             to="/"
             className="w-full md:w-fit bg-gradient-to-r from-[#f93cff] to-[#ffa9f9] text-white px-6 py-3 rounded-full font-bold transition hover:opacity-90"
           >
-            Kembali ke Home
+            Back to Home
           </Link>
         </div>
         </main>

@@ -3,20 +3,20 @@ import React from "react";
 const FAQ = () => {
   const faqs = [
     {
-      question: "Apa itu ARIMA Game Store?",
-      answer: "ARIMA Game Store adalah platform terbaik untuk membeli berbagai macam game favorit Anda, mulai dari aksi, petualangan, hingga simulasi."
+      question: "What is ARIMA Game Store?",
+      answer: "ARIMA Game Store is the best platform to purchase a variety of your favorite games, ranging from action, adventure, to simulation."
     },
     {
-      question: "Bagaimana cara membeli game di ARIMA Game Store?",
-      answer: "Anda dapat membeli game dengan memilih game yang diinginkan, menambahkannya ke keranjang, dan menyelesaikan pembayaran melalui metode yang tersedia."
+      question: "How do I purchase games on ARIMA Game Store?",
+      answer: "You can purchase games by selecting the desired game, adding it to the cart, and completing the payment through the available methods."
     },
     {
-      question: "Apakah ada diskon untuk pembelian game?",
-      answer: "Ya, kami sering menawarkan diskon dan promo menarik untuk berbagai game. Pastikan untuk memeriksa halaman promo kami secara berkala."
+      question: "Are there discounts for game purchases?",
+      answer: "Yes, we often offer discounts and exciting promotions for various games. Make sure to check our promo page regularly."
     },
     {
-      question: "Apakah Toko Game menyediakan game untuk semua platform?",
-      answer: "Ya, kami menyediakan game untuk berbagai platform seperti PC, PlayStation, Xbox, dan lainnya."
+      question: "Does the Game Store provide games for all platforms?",
+      answer: "Yes, we provide games for various platforms such as PC, PlayStation, Xbox, and others."
     }
   ];
 
@@ -27,7 +27,7 @@ const FAQ = () => {
           <strong className="font-extrabold">FAQ</strong>
         </h1>
         <p className="text-sm md:text-xl mb-12 text-gray-300 text-center">
-          Temukan jawaban untuk pertanyaan umum tentang <strong>ARIMA Game Store</strong> di bawah ini.
+          Find answers to common questions about <strong>ARIMA Game Store</strong> below.
         </p>
         <div className="space-y-8">
         {faqs.map((faq, index) => (

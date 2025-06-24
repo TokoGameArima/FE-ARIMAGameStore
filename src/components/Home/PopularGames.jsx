@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getAllProducts } from "../../api"; // ⬅️ pastikan path-nya bener
+import { getAllProducts } from "../../api"; // ⬅️ make sure the path is correct
 
 const PopularGames = () => {
   const [games, setGames] = useState([]);
@@ -19,7 +19,7 @@ const PopularGames = () => {
   return (
     <section className="bg-[#0f021e] text-white py-16 px-6">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">Game Terpopuler Minggu Ini</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-12">Most Popular Games This Week</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {games.map((game) => (
             <div key={game._id} className="bg-[#1a0833] rounded-xl overflow-hidden shadow-lg hover:shadow-[#f93cff]/30 transition cursor-pointer" onClick={() => navigate(`/games/${game._id}`)}>
