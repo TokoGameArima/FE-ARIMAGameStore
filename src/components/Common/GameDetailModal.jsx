@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
+import { ArrowRight } from "lucide-react";
+
 const GameDetailModal = ({ game, onClose }) => {
   if (!game) return null;
 
@@ -53,7 +55,8 @@ const GameDetailModal = ({ game, onClose }) => {
             }}
             className="text-indigo-400 hover:underline text-sm"
           >
-            See reviews and comments →
+          <span>See Reviews and Comments</span>
+          <ArrowRight size={16} className="inline ml-1" />
           </Link>
         </motion.div>
       </motion.div>

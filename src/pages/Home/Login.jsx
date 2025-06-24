@@ -2,10 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { login } from "../../api";
 
+import { Eye, EyeOff, ArrowRight } from "lucide-react";
+
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
 
   const handleLogin = async (e) => {
@@ -45,24 +48,35 @@ function Login() {
             onChange={(e) => setUsername(e.target.value)}
             aria-required="true"
           />
-          <input
-            id="password"
-            type="password"
-            placeholder="Password"
-            className="w-full p-2 rounded bg-[#1d004f] border border-purple-600 text-white placeholder-purple-300"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            aria-required="true"
-          />
+          <div className="relative">
+            <input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              className="w-full p-2 rounded bg-[#1d004f] border border-purple-600 text-white placeholder-purple-300"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              aria-required="true"
+            />
+            <button
+              type="button"
+              className="absolute inset-y-0 right-3 flex items-center text-purple-300"
+              onClick={() => setShowPassword(!showPassword)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
           <button type="submit" className="w-full py-2 font-bold text-white transition rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105" aria-label="Login">
-            Login →
+            <span>Login</span>
+            <ArrowRight size={16} className="inline ml-1" />
           </button>
           <p className="mt-4 text-sm text-center text-white">
             Do not have any account?{" "}
             <Link to="/register" className="text-yellow-400 hover:underline">
-              Signup here
+              Register here
             </Link>
-          </p>
+          </p> 
         </form>
       </div>
     </div>
