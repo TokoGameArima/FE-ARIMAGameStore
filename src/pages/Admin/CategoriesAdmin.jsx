@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getCategories, createCategory, updateCategory, deleteCategory } from "../../api/categoryApi";
+import { Pencil, Trash } from "lucide-react";
 
 function CategoriesAdmin() {
   const [categories, setCategories] = useState([]);
@@ -67,43 +68,45 @@ function CategoriesAdmin() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <h2 className="text-2xl font-bold">🗂️ Categories</h2>
-        <button onClick={() => openForm()} className="px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
+        <button onClick={() => openForm()} className="w-full sm:w-fit font-bold px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
           + Add Category
         </button>
       </div>
 
       {loading ? (
-        <p>Loading...</p>
+        <p>Loading categories...</p>
       ) : categories.length === 0 ? (
         <p>No categories available.</p>
       ) : (
-        <table className="w-full text-sm text-left text-white bg-[#1c003a] rounded">
-          <thead className="bg-purple-800 text-white">
-            <tr>
-              <th className="px-4 py-2">Name</th>
-              <th className="px-4 py-2">Description</th>
-              <th className="px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {categories.map((cat) => (
-              <tr key={cat._id} className="border-b border-purple-900">
-                <td className="px-4 py-2">{cat.category_name}</td>
-                <td className="px-4 py-2">{cat.description}</td>
-                <td className="px-4 py-2 flex gap-2">
-                  <button onClick={() => openForm(cat)} className="text-yellow-400 hover:underline">
-                    Edit
-                  </button>
-                  <button onClick={() => confirmDelete(cat)} className="text-red-500 hover:underline">
-                    Delete
-                  </button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm text-left text-white bg-[#1c003a] rounded">
+            <thead className="bg-purple-800 text-white">
+              <tr>
+                <th className="px-4 py-2">Name</th>
+                <th className="px-4 py-2">Description</th>
+                <th className="px-4 py-2">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {categories.map((cat) => (
+                <tr key={cat._id} className="border-b border-purple-900">
+                  <td className="px-4 py-2">{cat.category_name}</td>
+                  <td className="px-4 py-2">{cat.description}</td>
+                  <td className="px-4 py-2 flex gap-2">
+                    <button onClick={() => openForm(cat)} className="text-yellow-400 hover:underline">
+                        <Pencil size={16} />
+                    </button>
+                    <button onClick={() => confirmDelete(cat)} className="text-red-500 hover:underline">
+                        <Trash size={16} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
 
       {showForm && (

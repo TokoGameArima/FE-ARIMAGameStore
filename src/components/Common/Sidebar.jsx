@@ -1,9 +1,10 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Gamepad2, ShoppingBasket, Menu, X, LayoutDashboard, Package, Tag, Users } from "lucide-react";
 import { useState } from "react";
 
 const Sidebar = ({ role }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
@@ -16,9 +17,11 @@ const Sidebar = ({ role }) => {
     setIsOpen(!isOpen);
   };
 
+  const isActive = (path) => location.pathname === path;
+
   return (
     <>
-      <button onClick={toggleSidebar} className="fixed top-4 left-4 z-50 p-2 bg-[#15003a] text-white rounded-lg md:hidden hover:bg-purple-600 transition">
+      <button onClick={toggleSidebar} className="fixed top-4 left-4 z-[999] p-2 bg-[#15003a] text-white rounded-lg md:hidden hover:bg-purple-600 transition">
         {isOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
 
@@ -43,31 +46,79 @@ const Sidebar = ({ role }) => {
           <nav className="mt-6 space-y-4">
             {role === "admin" ? (
               <>
-                <Link to="/admin" className="flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600" onClick={() => setIsOpen(false)}>
+                <Link
+                  to="/admin"
+                  className={`flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600 ${
+                    isActive("/admin") ? "bg-purple-600" : ""
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
                   <LayoutDashboard size={18} /> Dashboard
                 </Link>
-                <Link to="/admin/orders" className="flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600" onClick={() => setIsOpen(false)}>
+                <Link
+                  to="/admin/orders"
+                  className={`flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600 ${
+                    isActive("/admin/orders") ? "bg-purple-600" : ""
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
                   <ShoppingBasket size={18} /> Orders
                 </Link>
-                <Link to="/admin/products" className="flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600" onClick={() => setIsOpen(false)}>
+                <Link
+                  to="/admin/products"
+                  className={`flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600 ${
+                    isActive("/admin/products") ? "bg-purple-600" : ""
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
                   <Package size={18} /> Products
                 </Link>
-                <Link to="/admin/categories" className="flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600" onClick={() => setIsOpen(false)}>
+                <Link
+                  to="/admin/categories"
+                  className={`flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600 ${
+                    isActive("/admin/categories") ? "bg-purple-600" : ""
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
                   <Tag size={18} /> Categories
                 </Link>
-                <Link to="/admin/developers" className="flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600" onClick={() => setIsOpen(false)}>
+                <Link
+                  to="/admin/developers"
+                  className={`flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600 ${
+                    isActive("/admin/developers") ? "bg-purple-600" : ""
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
                   <Users size={18} /> Developers
                 </Link>
               </>
             ) : (
               <>
-                <Link to="/games" className="flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600" onClick={() => setIsOpen(false)}>
+                <Link
+                  to="/games"
+                  className={`flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600 ${
+                    isActive("/games") ? "bg-purple-600" : ""
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
                   <Gamepad2 size={18} /> Browse Games
                 </Link>
-                <Link to="/cart" className="flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600" onClick={() => setIsOpen(false)}>
+                <Link
+                  to="/cart"
+                  className={`flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600 ${
+                    isActive("/cart") ? "bg-purple-600" : ""
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
                   <ShoppingBasket size={18} /> Cart
                 </Link>
-                <Link to="/orders" className="flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600" onClick={() => setIsOpen(false)}>
+                <Link
+                  to="/orders"
+                  className={`flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600 ${
+                    isActive("/orders") ? "bg-purple-600" : ""
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
                   <Package size={18} /> Order History
                 </Link>
               </>

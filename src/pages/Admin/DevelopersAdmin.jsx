@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getDevelopers, createDeveloper, updateDeveloper, deleteDeveloper } from "../../api/developerApi";
+import { Pencil, Trash } from "lucide-react";
 
 function DevelopersAdmin() {
   const [developers, setDevelopers] = useState([]);
@@ -67,43 +68,45 @@ function DevelopersAdmin() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
         <h2 className="text-2xl font-bold">👨‍💻 Developers</h2>
-        <button onClick={() => openForm()} className="px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
+        <button onClick={() => openForm()} className="w-full sm:w-fit font-bold px-4 py-2 text-white bg-purple-600 rounded hover:bg-purple-700">
           + Add Developer
         </button>
       </div>
 
       {loading ? (
-        <p>Loading...</p>
+        <p>Loading developers...</p>
       ) : developers.length === 0 ? (
         <p>No developers found.</p>
       ) : (
-        <table className="w-full text-sm text-left text-white bg-[#1c003a] rounded">
-          <thead className="bg-purple-800 text-white">
-            <tr>
-              <th className="px-4 py-2">Name</th>
-              <th className="px-4 py-2">Description</th>
-              <th className="px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {developers.map((dev) => (
-              <tr key={dev._id} className="border-b border-purple-900">
-                <td className="px-4 py-2">{dev.developer_name}</td>
-                <td className="px-4 py-2">{dev.description}</td>
-                <td className="px-4 py-2 flex gap-2">
-                  <button onClick={() => openForm(dev)} className="text-yellow-400 hover:underline">
-                    Edit
-                  </button>
-                  <button onClick={() => confirmDelete(dev)} className="text-red-500 hover:underline">
-                    Delete
-                  </button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm text-left text-white bg-[#1c003a] rounded">
+            <thead className="bg-purple-800 text-white">
+              <tr>
+                <th className="px-4 py-2">Name</th>
+                <th className="px-4 py-2">Description</th>
+                <th className="px-4 py-2">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {developers.map((dev) => (
+                <tr key={dev._id} className="border-b border-purple-900">
+                  <td className="px-4 py-2">{dev.developer_name}</td>
+                  <td className="px-4 py-2">{dev.description}</td>
+                  <td className="px-4 py-2 flex gap-2">
+                    <button onClick={() => openForm(dev)} className="text-yellow-400 hover:underline">
+                        <Pencil size={16} />
+                    </button>
+                    <button onClick={() => confirmDelete(dev)} className="text-red-500 hover:underline">
+                        <Trash size={16} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
 
       {/* Form Modal */}
