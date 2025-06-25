@@ -44,7 +44,7 @@ const CartPage = () => {
               <div key={item._id} className="bg-[#1e1b3a] p-4 rounded flex justify-between items-center">
                 <div>
                   <h3 className="font-semibold">{item.name}</h3>
-                  <p className="text-sm text-gray-400">Rp {item.price},-</p>
+                  <p className="text-sm text-gray-400">Rp{item.price},-</p>
                 </div>
                 <button onClick={() => removeFromCart(item._id)} className="text-red-400 hover:text-red-600">
                   ✕

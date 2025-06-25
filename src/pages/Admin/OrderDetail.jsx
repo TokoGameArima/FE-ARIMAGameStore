@@ -48,7 +48,7 @@ const OrderDetail = () => {
           <strong>Payment Method:</strong> {order.payment_method}
         </p>
         <p>
-          <strong>Total Price:</strong> Rp {order.total_price},-
+          <strong>Total Price:</strong> Rp{order.total_price},-
         </p>
 
         <p className="mt-2 font-semibold">Games:</p>
