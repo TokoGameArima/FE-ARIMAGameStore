@@ -19,3 +19,13 @@ export const login = async (data) => {
     throw err;
   }
 };
+
+export const changePassword = async (data) => {
+  try {
+    const res = await api.post("/api/auth/change-password", data);
+    return res.data;
+  } catch (err) {
+    console.error("Failed to change your password:", err);
+    throw err;
+  }
+};
