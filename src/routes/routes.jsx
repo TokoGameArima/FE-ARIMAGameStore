@@ -12,6 +12,8 @@ import CartPage from "../pages/Dashboard/CartPage";
 import OrdersPage from "../pages/Dashboard/OrdersPage";
 import ReviewPage from "../pages/Dashboard/ReviewPage";
 import ReviewListPage from "../pages/Dashboard/ReviewListPage";
+import ProfilePage from "../pages/Dashboard/ProfilePage";
+import ChangePasswordPage from "../pages/Dashboard/ChangePasswordPage";
 
 import DashboardAdmin from "../pages/Admin/DashboardAdmin";
 import OrdersAdmin from "../pages/Admin/OrdersAdmin";
@@ -49,6 +51,8 @@ const AppRoutes = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/orders" element={<OrdersPage />} />
         <Route path="/review/:id" element={<ReviewPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/change-password" element={<ChangePasswordPage />} />
       </Route>
 
       <Route
