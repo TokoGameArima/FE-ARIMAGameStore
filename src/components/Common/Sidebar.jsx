@@ -1,5 +1,5 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Gamepad2, ShoppingBasket, Menu, X, LayoutDashboard, Package, Tag, Users } from "lucide-react";
+import { Gamepad2, ShoppingBasket, Menu, X, LayoutDashboard, Package, Tag, Users, CircleUserRound as UserIcon, ArrowLeft } from "lucide-react";
 import { useState } from "react";
 
 const Sidebar = ({ role }) => {
@@ -121,13 +121,31 @@ const Sidebar = ({ role }) => {
                 >
                   <Package size={18} /> Order History
                 </Link>
+                <Link
+                  to="/profile"
+                  className={`flex items-center gap-2 px-4 py-2 transition rounded hover:bg-purple-600 ${
+                    isActive("/profile") ? "bg-purple-600" : ""
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <UserIcon size={18} /> My Profile
+                </Link>
               </>
             )}
           </nav>
         </div>
-        <button onClick={handleLogout} className="py-2 mt-10 font-semibold text-white transition rounded-full bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90">
-          🚪 Logout
-        </button>
+        <div className="h-fit flex flex-col gap-4">
+          <button
+            onClick={() => navigate("/")}
+            className="block w-full border-2 border-[#f93cff] text-white px-6 py-2 rounded-full font-bold transition hover:opacity-90"
+          >
+            <ArrowLeft size={18} className="inline-block mr-2" />
+            Go Back Home
+          </button>
+          <button onClick={handleLogout} className="py-2 font-semibold text-white transition rounded-full bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90">
+            🚪 Logout
+          </button>
+        </div>
       </aside>
     </>
   );
