@@ -46,7 +46,7 @@ const DashboardAdmin = () => {
 
       <div className="px-8 pb-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-8">
+          <div className="grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-8">
             <div className="relative group">
               <div className="absolute inset-0 transition-opacity duration-300 opacity-75 bg-gradient-to-r from-purple-600/30 to-purple-800/30 rounded-2xl blur-lg group-hover:opacity-100"></div>
               <div className="relative bg-[#1e1b3a]/80 backdrop-blur-sm border border-purple-500/20 p-8 rounded-2xl hover:border-purple-500/40 transition-all duration-300 transform hover:-translate-y-1">
