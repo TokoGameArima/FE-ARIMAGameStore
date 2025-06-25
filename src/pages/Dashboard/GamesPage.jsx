@@ -20,17 +20,20 @@ const GamesPage = () => {
   const gamesPerPage = 6;
 
   const [selectedGame, setSelectedGame] = useState(null);
+  const [loading, setLoading] = useState(true); // Loading state
   const openModal = (game) => setSelectedGame(game);
   const closeModal = () => setSelectedGame(null);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Set loading to true before fetching
       const [gameRes, catRes] = await Promise.all([
         getAllProducts(),
         getCategories(),
       ]);
       setGames(gameRes);
       setCategories([{ _id: "all", category_name: "All" }, ...catRes]);
+      setLoading(false); // Set loading to false after fetching
     };
     fetchData();
   }, []);
@@ -57,6 +60,7 @@ const GamesPage = () => {
 
   return (
     <div className="bg-[#0f021e] text-white min-h-screen p-6">
+      <h1 className="text-2xl font-bold mb-6">🎮 Browse Games</h1>
       {/* Filter Search + Kategori */}
       <div className="flex flex-col md:flex-row gap-4 mb-6">
         <input
@@ -79,55 +83,63 @@ const GamesPage = () => {
         </select>
       </div>
 
-      {/* Game Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {currentGames.map((game) => (
-          <div
-            key={game._id}
-            onClick={() => setSelectedGame(game)}
-            className="bg-[#1e1b3a] p-4 rounded cursor-pointer hover:scale-[1.01] transition"
-          >
-            <img
-              src={game.pictures || "/images/placeholder.png"}
-              alt={game.name}
-              className="w-full h-40 object-cover rounded mb-2"
-            />
-            <h2 className="font-bold text-lg">{game.name}</h2>
-            <p className="text-sm text-gray-400 mb-2 line-clamp-2">
-              {game.description}
-            </p>
-            <p className="text-pink-400 font-semibold mb-3">
-              Rp {game.price},-
-            </p>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                addToCart(game);
-              }}
-              className="w-full bg-pink-600 hover:bg-pink-700 rounded py-2"
-              disabled={cartItems.some((item) => item._id === game._id)}
-            >
-              {cartItems.some((item) => item._id === game._id)
-                ? "Added"
-                : "Add to Cart"}
-            </button>
-            <Link
-              to={`/games/${game._id}/reviews`}
-              className="text-sm text-indigo-400 hover:underline mt-2 block"
-              onClick={(e) => e.stopPropagation()}
-            >
-              View Reviews
-            </Link>
+      {/* Loading State */}
+      {loading ? (
+        <p className="text-center text-lg">Loading games...</p>
+      ) : (
+        <>
+          {/* Game Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {currentGames.map((game) => (
+              <div
+                key={game._id}
+                onClick={() => setSelectedGame(game)}
+                className="bg-[#1e1b3a] p-4 rounded cursor-pointer hover:scale-[1.01] transition"
+              >
+                <img
+                  src={game.pictures || "/images/placeholder.png"}
+                  alt={game.name}
+                  className="w-full h-40 object-cover rounded mb-2"
+                />
+                <h2 className="font-bold text-lg">{game.name}</h2>
+                <p className="text-sm text-gray-400 mb-2 line-clamp-2">
+                  {game.description}
+                </p>
+                <p className="text-pink-400 font-semibold mb-3">
+                  Rp {game.price},-
+                </p>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(game);
+                  }}
+                  className="w-full bg-pink-600 hover:bg-pink-700 rounded py-2"
+                  disabled={cartItems.some((item) => item._id === game._id)}
+                >
+                  {cartItems.some((item) => item._id === game._id)
+                    ? "Added"
+                    : "Add to Cart"}
+                </button>
+                <Link
+                  to={`/games/${game._id}/reviews`}
+                  className="text-sm text-indigo-400 hover:underline mt-2 block"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  View Reviews
+                </Link>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {/* Pagination */}
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={(page) => setCurrentPage(page)}
-      />
+          {/* Pagination */}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={(page) => setCurrentPage(page)}
+          />
+        </>
+      )}
+
       <GameDetailModal
         game={selectedGame}
         onClose={() => setSelectedGame(null)}
