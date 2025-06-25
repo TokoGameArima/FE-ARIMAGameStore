@@ -137,10 +137,10 @@ const Sidebar = ({ role }) => {
         <div className="h-fit flex flex-col gap-4">
           <button
             onClick={() => navigate("/")}
-            className="block w-full border-2 border-[#f93cff] text-white px-6 py-2 rounded-full font-bold transition hover:opacity-90"
+            className="block w-full border-2 border-[#f93cff] text-white px-6 py-2 rounded-full font-bold transition hover:opacity-90 hover:bg-[#f93cff]/20"
           >
             <ArrowLeft size={18} className="inline-block mr-2" />
-            Go Back Home
+            Back Home
           </button>
           <button onClick={handleLogout} className="py-2 font-semibold text-white transition rounded-full bg-gradient-to-r from-pink-500 to-purple-600 hover:opacity-90">
             🚪 Logout
