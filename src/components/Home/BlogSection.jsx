@@ -25,12 +25,13 @@ const BlogSection = () => {
   return (
     <section className="bg-[#0c011b] text-white py-16 px-6">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12">
+        <h2 data-aos="fade-down" className="text-3xl md:text-4xl font-bold mb-12">
           Blog & Game News
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {blogs.map((blog) => (
             <div
+              data-aos="zoom-in"
               key={blog.id}
               className="bg-[#1a0833] rounded-xl overflow-hidden shadow-lg hover:shadow-[#f93cff]/30 transition"
             >

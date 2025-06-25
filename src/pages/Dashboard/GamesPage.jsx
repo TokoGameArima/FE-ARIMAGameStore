@@ -106,7 +106,7 @@ const GamesPage = () => {
                   {game.description}
                 </p>
                 <p className="text-pink-400 font-semibold mb-3">
-                  Rp {game.price},-
+                  Rp{game.price},-
                 </p>
                 <button
                   onClick={(e) => {

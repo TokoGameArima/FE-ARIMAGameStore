@@ -1,6 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ArrowRight } from "lucide-react";
+
+function NavbarButton() {
+  const [buttonText, setButtonText] = useState("Login");
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setButtonText("Browse Games");
+    } else {
+      setButtonText("Login");
+    }
+  }, []);
+
+  return (
+    <Link
+      to={buttonText === "Login" ? "/login" : "/games"}
+      className={`w-full md:w-fit px-4 py-2 text-lg md:text-sm text-white text-center transition rounded-full shadow bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105`}
+    >
+      <span>{buttonText}</span>
+      <ArrowRight size={16} className="inline ml-1" />
+    </Link>
+  );
+}
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,15 +82,7 @@ function Navbar() {
         </ul>
 
         <div className="hidden font-bold md:block">
-          <Link
-            to="/login"
-            className={`px-4 py-2 text-sm text-white transition rounded-full shadow bg-gradient-to-r from-purple-500 to-pink-500 hover:scale-105 ${
-              isActive("/login") ? "scale-105" : ""
-            }`}
-          >
-          <span>Login</span>
-          <ArrowRight size={16} className="inline ml-1" />
-          </Link>
+        <NavbarButton />
         </div>
 
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden focus:outline-none">
@@ -116,16 +131,7 @@ function Navbar() {
         >
           Contact Us
         </Link>
-        <Link
-          to="/login"
-          onClick={() => setIsOpen(false)}
-          className={`w-full text-center font-bold px-4 py-2 text-lg rounded-full shadow bg-gradient-to-r from-purple-500 to-pink-500 ${
-            isActive("/login") ? "scale-105" : ""
-          }`}
-        >
-          <span>Login</span>
-          <ArrowRight size={16} className="inline ml-1" />
-        </Link>
+        <NavbarButton />
       </div>
     </nav>
   );

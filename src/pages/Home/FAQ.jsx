@@ -23,15 +23,15 @@ const FAQ = () => {
   return (
     <section className="relative bg-gradient-to-b from-[#0f0220] text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <h1 className="text-4xl md:text-6xl font-semibold mb-6 leading-tight text-center">
+        <h1 data-aos="zoom-in" className="text-4xl md:text-6xl font-semibold mb-6 leading-tight text-center">
           <strong className="font-extrabold">FAQ</strong>
         </h1>
-        <p className="text-sm md:text-xl mb-12 text-gray-300 text-center">
+        <p data-aos="fade-up" className="text-sm md:text-xl mb-12 text-gray-300 text-center">
           Find answers to common questions about <strong>ARIMA Game Store</strong> below.
         </p>
         <div className="space-y-8">
         {faqs.map((faq, index) => (
-          <details key={index} className="bg-[#1a0333] p-6 rounded-lg shadow-lg">
+          <details data-aos="fade-right" key={index} className="bg-[#1a0333] p-6 rounded-lg shadow-lg">
             <summary className="text-xl md:text-2xl font-bold mb-4 cursor-pointer">
               {faq.question}
             </summary>

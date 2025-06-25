@@ -45,7 +45,7 @@ const GameDetailModal = ({ game, onClose }) => {
             </p>
           )}
           <p className="text-pink-400 font-bold text-lg mb-3">
-            Rp {game.price.toLocaleString()},-
+            Rp{game.price.toLocaleString()},-
           </p>
           <Link
             to={`/games/${game._id}/reviews`}
