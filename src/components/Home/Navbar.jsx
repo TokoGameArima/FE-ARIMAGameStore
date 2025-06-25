@@ -51,16 +51,6 @@ function Navbar() {
           </li>
           <li>
             <Link
-              to="/blog"
-              className={`hover:underline hover:underline-offset-4 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 ${
-                isActive("/blog") ? "text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500" : ""
-              }`}
-            >
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link
               to="/faq"
               className={`hover:underline hover:underline-offset-4 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 ${
                 isActive("/faq") ? "text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500" : ""
@@ -103,15 +93,6 @@ function Navbar() {
           }`}
         >
           Home
-        </Link>
-        <Link
-          to="/blog"
-          onClick={() => setIsOpen(false)}
-          className={`w-full rounded-lg p-4 hover:text-[#0a0025] hover:bg-white ${
-            isActive("/blog") ? "text-[#0a0025] bg-white" : ""
-          }`}
-        >
-          Blog
         </Link>
         <Link
           to="/faq"
