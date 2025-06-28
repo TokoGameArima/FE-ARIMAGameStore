@@ -13,6 +13,7 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError("");
     try {
       const res = await login({ username, password });
       localStorage.setItem("token", res.token);
@@ -23,8 +24,9 @@ function Login() {
       } else {
         navigate("/games");
       }
-    } catch {
-      setError("Invalid credentials. Please try again.");
+    } catch (err) {
+      const errorMessage = err.response?.data?.message || "Invalid credentials. Please try again.";
+      setError(errorMessage);
     }
   };
 
